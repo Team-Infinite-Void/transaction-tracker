@@ -1,3 +1,7 @@
+from contextlib import nullcontext
+from account_methods import connect_to_db
+from account_methods import create_cursor
+from account_methods import login_menu
 from datetime import datetime
 all_records = []
 
@@ -23,12 +27,15 @@ class Transaction:
     def __str__(self) -> str:
         return f'Title: {self.title}, Amount: {self.amount}, Time: {self.get_time()}'
 
+    def cursor(self):
+        return self.cursor.connect_to_db('./userdatabase.db')
 
-def menu():
+def main_menu(username):
     cont = True
 
+    print('Logged in as %a\n', username)
     while cont:
-        choice = input("***************\n1. Add new record\n2. Delete a record\n3. View all records\n4. View Analytics\n5. Exit\nEnter here: ")
+        choice = input("***************\n1. Add new record\n2. Delete a record\n3. View all records\n4. View Analytics\n5. Delete your account\n6. Exit\nEnter here: ")
         match choice:
             case "1":
                 add_new_record()
@@ -39,11 +46,13 @@ def menu():
             case "4":
                 view_analytics()
             case "5":
+                delete_record(sql_connection, cursor)
+            case "6":
                 print("You chose to exit, goodbye!")
                 cont = False
                 break
             case _:
-                print("That was an invalid input. Please enter 1, 2, 3, 4, or 5.")
+                print("That was an invalid input. Please enter 1, 2, 3, 4, 5, or 6.")
 
 
 def add_new_record():
@@ -97,4 +106,11 @@ def view_analytics():
     print(f"Net Balance: {net_balance}\n")
 
 
-menu()
+
+# Program execution starts here.
+account_database = 'userdatabase.db'
+sql_connection = connect_to_db(account_database)
+cursor = create_cursor(sql_connection, account_database)
+username = login_menu(sql_connection, cursor)
+if username:
+    main_menu(username)
