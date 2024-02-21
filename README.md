@@ -7,7 +7,7 @@ So far, we have set up a text-based menu for the user to choose what they would 
 ## Pending work
 
 ## Member current contributions and next steps:
-Galen Chang
+Galen Chang - Added the user account SQLite3 database and functions and menus to add/delete user and login.
 
 Josiah Kila
 
