@@ -3,45 +3,34 @@ import sqlite3
 from sqlite3 import Error
 import os.path
 
-def check_if_db_exists(user_db):
-    if os.path.isfile(user_db):
-        return True
-    else:
-        return False
-
-
 #https://www.sqlitetutorial.net/sqlite-python/creating-database/
 def connect_to_db(user_db):
     # sqlite3.connect creates the database if it does not exist.
     return sqlite3.connect(user_db)
-    
+
 def create_cursor(sql_connection, user_db):
     try:
         cursor = sql_connection.cursor()
     except Error as error:
         print(error)
-    finally:
-        if os.path.getsize(user_db) != 0:
-            print('exists')
-            return cursor
-            #return sql_connection.cursor()
-        else:    
-            # https://www.youtube.com/watch?v=3NEzo3CfbPg by NeuralNine
-            #cursor = sql_connection.cursor()
-            print('did not exist')
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS userdata (
-                    id INTEGER PRIMARY KEY,
-                    username VARCHAR(255) NOT NULL,
-                    password VARCHAR(255) NOT NULL
-                );
-            """)
-            return cursor
+
+    if os.path.getsize(user_db) == 0:
+        # https://www.youtube.com/watch?v=3NEzo3CfbPg by NeuralNine
+        #cursor = sql_connection.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS userdata (
+                id INTEGER PRIMARY KEY,
+                username VARCHAR(255) NOT NULL,
+                password VARCHAR(255) NOT NULL
+            );
+        """)
+    
+    return cursor
 
 def login_menu(sql_connection, cursor):
     cont = True
 
-    while cont == True:
+    while cont is True:
         print('Please select an option:\n')
         print('1) Login')
         print('2) Create an account')
@@ -55,7 +44,7 @@ def login_menu(sql_connection, cursor):
             add_user(sql_connection, cursor)
         elif selection == '3':
             print('Goodbye.')
-            cont == False
+            cont = False
             break
         else:
             print('Invalid selection.  Please try again.\n\n')
@@ -69,7 +58,7 @@ def login(cursor):
     while valid_login == False:
         username = input('Username: ')
         password = input('Password: ')
-    
+
         hashed_username = hashlib.sha256(username.encode()).hexdigest()
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         cursor.execute("SELECT * FROM userdata WHERE username = ? AND password = ?", (hashed_username, hashed_password))
@@ -80,7 +69,7 @@ def login(cursor):
             print('Either the user doesn\'t exist or the credentials are invalid.  Please try again.\n\n')
 
     return username
-            
+
 # https://www.youtube.com/watch?v=3NEzo3CfbPg by NeuralNine
 def add_user(sql_connection, cursor):
     print('Adding a new user.\n')
@@ -103,7 +92,7 @@ def add_user(sql_connection, cursor):
     sql_connection.commit()
 
 # https://www.youtube.com/watch?v=3NEzo3CfbPg by NeuralNine
-def remove_user(username, sql_connection, cursor):
+def delete_account(username, sql_connection, cursor):
     delete_user = False
 
     while delete_user == False:
@@ -125,3 +114,4 @@ def remove_user(username, sql_connection, cursor):
             break
         else:
             print('Invalid input.  Please enter either \'Y\' or \'N\'.\n\n')
+            

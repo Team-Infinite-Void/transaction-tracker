@@ -2,12 +2,21 @@
 A Python project that will track a user's transactions. Users will be able to securely input and view their purchases and perform data analytics to get a better sense of their total spending within an allotted time.
 
 ## Currently implemented
-So far, we have set up a text-based menu for the user to choose what they would like to do. This includes adding/deleting records, viewing all records, and exiting the program.
+Text-based menu for the user to choose what they would like to do.
+    Adding/deleting records, viewing all records, exiting the program, and delete their account.
+User account database that displays an interactive login/create account menu.
+    Once logged in, users can interact with the main menu.
+    Stores encrypted usernames and passwords in an SQLite3 database locally.
+    Provides login, add account, delete account, and menu functionality.
 
 ## Pending work
+Create a transaction database using SQLite3
+Implement networking (currently, everything is done locally on the user's computer)
+    Authentication, database storage and access, etc.
+
 
 ## Member current contributions and next steps:
-Galen Chang - Added the user account SQLite3 database and functions and menus to add/delete user and login.
+Galen Chang - Created a series of functions that create and interact with an encrypted SQLite3 database locally.  Users will see a login prompt first that also gives them the option of creating their account.  Once authenticated, users can delete their account as well as access all the functionality the main menu provides.  Next step will be to implement the transaction database using SQLite3.
 
 Josiah Kila
 

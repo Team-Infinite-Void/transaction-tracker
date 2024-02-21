@@ -1,8 +1,8 @@
-from contextlib import nullcontext
+from datetime import datetime
 from account_methods import connect_to_db
 from account_methods import create_cursor
+from account_methods import delete_account
 from account_methods import login_menu
-from datetime import datetime
 all_records = []
 
 class Transaction:
@@ -27,8 +27,9 @@ class Transaction:
     def __str__(self) -> str:
         return f'Title: {self.title}, Amount: {self.amount}, Time: {self.get_time()}'
 
-    def cursor(self):
-        return self.cursor.connect_to_db('./userdatabase.db')
+    # Will revisit this later
+    #def cursor(self):
+        #return self.cursor.connect_to_db('./userdatabase.db')
 
 def main_menu(username):
     cont = True
@@ -46,7 +47,7 @@ def main_menu(username):
             case "4":
                 view_analytics()
             case "5":
-                delete_record(sql_connection, cursor)
+                delete_account(username, sql_connection, cursor)
             case "6":
                 print("You chose to exit, goodbye!")
                 cont = False
