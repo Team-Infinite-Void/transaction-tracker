@@ -21,6 +21,7 @@ A Python project that will track a user's transactions. Users will be able to se
     * Next step will be to implement the transaction database using SQLite3.
 
   * Josiah Kila
+    * I added the remaining functions to the menu to view Analytics. I also added a timestamp feature to track when someone makes a transaction. Additonaly, I added a filtering system so the user cannot input incorrect data.
 
   * Chris Dang
 
