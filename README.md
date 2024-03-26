@@ -1,6 +1,9 @@
 # transaction-tracker
 A Python project that will track a user's transactions. Users will be able to securely input and view their purchases and perform data analytics to get a better sense of their total spending within an allotted time.
 
+# QR Authenticator Steps
+
+* When you create an account, the program will automatically generate a qr code for you within the project folder. You may need to refresh. Scan the qr code with the Google Authenticator app and input the code from the Google Authenticator app when attempting to login. If it is correct it will allow you to login.
 ## Currently implemented
   * Text-based menu for the user to choose what they would like to do.
     * Adding/deleting records, viewing all records, exiting the program, and delete their account.
