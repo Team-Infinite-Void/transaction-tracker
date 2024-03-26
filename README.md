@@ -22,6 +22,8 @@ A Python project that will track a user's transactions. Users will be able to se
 
   * Josiah Kila
     * I added the remaining functions to the menu to view Analytics. I also added a timestamp feature to track when someone makes a transaction. Additonaly, I added a filtering system so the user cannot input incorrect data.
+   
+    * Assignment 3: I added further security by adding a qr code generator and using Google Authenticator to generate an OTP for users trying to login. If this was a real transaction tracker with important information such as bank info and account records, this would be an extra barrier for any hacker.
 
   * Chris Dang
 
