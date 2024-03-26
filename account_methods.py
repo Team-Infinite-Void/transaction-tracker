@@ -1,7 +1,6 @@
 import hashlib
 import os
 import sqlite3
-from sqlite3 import Error
 import pyotp
 import qrcode
 
@@ -65,12 +64,24 @@ def login(cursor):
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         cursor.execute("SELECT * FROM userdata WHERE username = ? AND password = ?", (hashed_username, hashed_password))
 
-        if cursor.fetchall():
-            valid_login = True
-            generate_and_verify_otp(cursor, hashed_username)
-            return username
+        row = cursor.fetchone()
+        if row:
+            secret = row[3]  # Assuming the OTP secret is stored in the fourth column
+            if generate_and_verify_otp(secret):
+                valid_login = True
+                return username
         else:
             print('Either the user doesn\'t exist or the credentials are invalid. Please try again.\n\n')
+
+# Function to retrieve the user's OTP secret from the database
+def get_user_secret(cursor, hashed_username):
+    cursor.execute("SELECT totp_secret FROM userdata WHERE username = ?", (hashed_username,))
+    row = cursor.fetchone()
+    if row:
+        return row[0]
+    else:
+        print("Failed to retrieve OTP secret.")
+        return None
 
 # Function to add a new user
 def add_user(sql_connection, cursor):
@@ -102,24 +113,22 @@ def add_user(sql_connection, cursor):
 def generate_qr_code(uri):
     qr = qrcode.make(uri)
     qr.save("YOUR_QR_CODE.png")
-    print("QR code saved as YOUR_QR_CODE.png.png. Scan it with Google Authenticator.")
+    print("QR code saved as YOUR_QR_CODE.png. Scan it with Google Authenticator.")
 
 # Function to generate and verify OTP
-def generate_and_verify_otp(cursor, hashed_username):
-    row = cursor.execute("SELECT totp_secret FROM userdata WHERE username = ?", (hashed_username,)).fetchone()
-    if row:
-        secret = row[0]
-        totp = pyotp.TOTP(secret)
-        otp = totp.now()
+def generate_and_verify_otp(secret):
+    """Generate an OTP and prompt for verification."""
+    totp = pyotp.TOTP(secret)
+    otp = totp.now()
 
-        user_provided_otp = input("Enter the OTP from Google Authenticator: ")
-        # Increase the verification window
-        if totp.verify(user_provided_otp, valid_window=1):
-            print("The OTP is valid.")
-        else:
-            print("The OTP is invalid.")
+    user_provided_otp = input("Enter the OTP from Google Authenticator: ")
+    # Increase the verification window
+    if totp.verify(user_provided_otp, valid_window=1):
+        print("The OTP is valid.")
+        return True
     else:
-        print("User not found or OTP secret not set.")
+        print("The OTP is invalid.")
+        return False
 
 # Function to delete user account
 def delete_account(username, sql_connection, cursor):
@@ -152,3 +161,10 @@ def main():
     cursor = create_cursor(sql_connection, user_db)
 
     # Start login menu
+    username = login_menu(sql_connection, cursor)
+    if username:
+        print("Logged in as:", username)
+    # Continue with your main program logic here
+
+if __name__ == "__main__":
+    main()

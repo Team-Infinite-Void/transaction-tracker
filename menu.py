@@ -34,27 +34,25 @@ class Transaction:
 def main_menu(username):
     cont = True
 
-    print('Logged in as %a\n', username)
+    print('Logged in as %a\n' % username)
     while cont:
         choice = input("***************\n1. Add new record\n2. Delete a record\n3. View all records\n4. View Analytics\n5. Delete your account\n6. Exit\nEnter here: ")
-        match choice:
-            case "1":
-                add_new_record()
-            case "2":
-                delete_record()
-            case "3":
-                view_all_records()
-            case "4":
-                view_analytics()
-            case "5":
-                delete_account(username, sql_connection, cursor)
-            case "6":
-                print("You chose to exit, goodbye!")
-                cont = False
-                break
-            case _:
-                print("That was an invalid input. Please enter 1, 2, 3, 4, 5, or 6.")
-
+        if choice == "1":
+            add_new_record()
+        elif choice == "2":
+            delete_record()
+        elif choice == "3":
+            view_all_records()
+        elif choice == "4":
+            view_analytics()
+        elif choice == "5":
+            delete_account(username, sql_connection, cursor)
+        elif choice == "6":
+            print("You chose to exit, goodbye!")
+            cont = False
+            break
+        else:
+            print("That was an invalid input. Please enter 1, 2, 3, 4, 5, or 6.")
 
 def add_new_record():
     title = input("\nTitle of the transaction: Enter a short description\n")
