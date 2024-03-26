@@ -101,8 +101,8 @@ def add_user(sql_connection, cursor):
 # Function to generate a QR code
 def generate_qr_code(uri):
     qr = qrcode.make(uri)
-    qr.save("totp_setup.png")
-    print("QR code saved as totp_setup.png. Scan it with Google Authenticator.")
+    qr.save("YOUR_QR_CODE.png")
+    print("QR code saved as YOUR_QR_CODE.png.png. Scan it with Google Authenticator.")
 
 # Function to generate and verify OTP
 def generate_and_verify_otp(cursor, hashed_username):
@@ -112,7 +112,6 @@ def generate_and_verify_otp(cursor, hashed_username):
         totp = pyotp.TOTP(secret)
         otp = totp.now()
 
-        print("Current OTP:", otp)  # Print the OTP generated
         user_provided_otp = input("Enter the OTP from Google Authenticator: ")
         # Increase the verification window
         if totp.verify(user_provided_otp, valid_window=1):
