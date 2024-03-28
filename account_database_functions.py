@@ -5,25 +5,25 @@ import pyotp
 import qrcode
 
 # Function to connect to the database
-def connect_to_db(user_db):
+def connect_to_account_db(user_db):
     return sqlite3.connect(user_db)
 
 # Function to create a cursor for database operations
-def create_cursor(sql_connection, user_db):
+def create_account_cursor(sql_connection, user_db):
     try:
         cursor = sql_connection.cursor()
-    except Error as error:
+    except Exception as error:
         print(error)
 
-    if os.path.getsize(user_db) == 0:
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS userdata (
-                id INTEGER PRIMARY KEY,
-                username VARCHAR(255) NOT NULL,
-                password VARCHAR(255) NOT NULL,
-                totp_secret VARCHAR(255) NOT NULL
-            );
-        """)
+    # if os.path.getsize(user_db) == 0:
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS userdata (
+            id INTEGER PRIMARY KEY,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL,
+            totp_secret TEXT NOT NULL
+        );
+    """)
 
     return cursor
 
@@ -153,18 +153,3 @@ def delete_account(username, sql_connection, cursor):
             break
         else:
             print('Invalid input. Please enter either \'Y\' or \'N\'.\n\n')
-
-# Main function
-def main():
-    user_db = "user_data.db"
-    sql_connection = connect_to_db(user_db)
-    cursor = create_cursor(sql_connection, user_db)
-
-    # Start login menu
-    username = login_menu(sql_connection, cursor)
-    if username:
-        print("Logged in as:", username)
-    # Continue with your main program logic here
-
-if __name__ == "__main__":
-    main()
