@@ -1,6 +1,12 @@
 # transaction-tracker
 A Python project that will track a user's transactions. Users will be able to securely input and view their purchases and perform data analytics to get a better sense of their total spending within an allotted time.
 
+# Progress
+* QR Authenticator
+* SQLite3 Transaction Database
+* Improved functions
+* Cleaned up .py files (decluttered and moved functions into .py files that make sense, like account functions to account_database_functions.py)
+
 # Link
 https://github.com/Team-Infinite-Void/transaction-tracker
 
@@ -16,18 +22,25 @@ https://github.com/Team-Infinite-Void/transaction-tracker
     * Stores encrypted usernames and passwords in an SQLite3 database locally
     * Provides login, add account, delete account, and menu functionality.
     * QR Authenticator that works with Google Authenticator. It sends an OTP to your phone that you need to login.
+  * Transactions database that displays an interactive menu for the user to modify their transactions.
+    * Stores transactions in cleartext in an SQLite3 database locally.
+      * Table is named after the user's hashed account name.
+    * Provides add, delete, and view all transaction(s), as well as view transaction analytics.
 
 ## Pending work
-  * Create a transaction database using SQLite3.
   * Implement networking (currently, everything is done locally on the user's computer).
     * Authentication, database storage and access, etc.
-  * Exports a Financial Report file
-
+  * Exports a Financial Report file.
+  * Continue improving functions.
+    * Particularly analytics (very buggy with SQLite3).
+  * Hash all table entries in transaction database.
 
 ## Member current contributions and next steps:
   * Galen Chang
     * Created a series of functions that create and interact with an encrypted SQLite3 database locally.  Users will see a login prompt first that also gives them the option of creating their account.  Once authenticated, users can delete their account as well as access all the functionality the main menu provides.
     * Next step will be to implement the transaction database using SQLite3.
+
+    * Assignment 3: Implemented SQLite3 transactions database and converted all associated functions to SQLite3.  Current and next steps will be to hash all transaction database entries and debug analytics function, as well as conduct further testing.
 
   * Josiah Kila
     * I added the remaining functions to the menu to view Analytics. I also added a timestamp feature to track when someone makes a transaction. Additonaly, I added a filtering system so the user cannot input incorrect data.
