@@ -48,6 +48,7 @@ https://github.com/Team-Infinite-Void/transaction-tracker
     * Assignment 3: I added further security by adding a qr code generator and using Google Authenticator to generate an OTP for users trying to login. If this was a real transaction tracker with important information such as bank info and account records, this would be an extra barrier for any hacker.
 
   * Chris Dang
-
+    * I worked on the reports on our verification methods and how we executed our solutions. I also got the chance to make contributions to our Risk Assessment Plan, which focused on security and privacy to protect our project from potential risks. Aside from these tasks, I was involved in our team's design.
+      
   * Michelle Ho
     * I have created the text-based menu and will work on an option to perform data analytics on the recorded transactions. This includes The total sum of expense savings for a given period. That also means including a date-time functionality for each record.
