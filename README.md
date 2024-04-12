@@ -33,7 +33,7 @@ Upon creating an account, the program automatically generates a QR code within t
 ## Member Contributions and Next Steps
 * **Galen Chang:**
   * Previously implemented encrypted SQLite3 database functionalities for user account management.
-  * **Next Steps:** Develop the transaction database with SQLite3 and integrate hashing for transaction entries. Continue to refine and debug the analytics function.
+  * **Next Steps:** Develop the transaction database with SQLite3 and integrate hashing for transaction entries. Continue to refine and debug the analytics function.  Implement username and password complexity requirements.
 
 * **Josiah Kila:**
   * Added transaction timestamping and data input validation systems.
