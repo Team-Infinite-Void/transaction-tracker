@@ -55,54 +55,54 @@ A Python project that will track a user's transactions. Users will be able to se
   * Add complexity requirements to username and password.
 
 ## Member Contributions and Next Steps
-* **Galen Chang:**
-  **Feb 21**
-  * **Work Done:** Implemented encrypted SQLite3 database functionalities for user account management.
-  * **Current and Next Steps:** Implement transaction database using SQLite3.
+# **Galen Chang:**
+  * **Feb 21**
+    * **Work Done:** Implemented encrypted SQLite3 database functionalities for user account management.
+    * **Current and Next Steps:** Implement transaction database using SQLite3.
+
+  * **Mar 28**
+    * **Work Done:** Implemented cleartext SQLite3 database functionalities for transaction management.
+    * **Current and Next Steps:** Encrypt the transaction database and debug analytics function.
+
+  * **Apr 11**
+    * **Work Done:** Tested password cracking tool "John The Ripper" against encrypted user account database.
+    * **Current and Next Steps:** Encrypt the transaction database, debug analytics function, and implement username and password complexity requirements.
+
+# **Josiah Kila:**
+  * **Feb 21**
+    * **Work Done:** Added transaction timestamping, analytics functions, and data input validation systems.
+    * **Current and Next Steps:** Refinement of analytics and input validation.
 
   **Mar 28**
-  * **Work Done:** Implemented cleartext SQLite3 database functionalities for transaction management.
-  * **Current and Next Steps:** Encrypt the transaction database and debug analytics function.
+    * **Work Done:** Enhance the security model by refining the QR code generator and OTP validation systems to protect sensitive user data.
+    * **Current and Next Steps:** Research additional security measures we could add.
 
-  **Apr 11**
-  * **Work Done:** Tested password cracking tool "John The Ripper" against encrypted user account database.
-  * **Current and Next Steps:** Encrypt the transaction database, debug analytics function, and implement username and password complexity requirements.
+  * **Apr 11**
+    * **Work Done:** Conducted fuzzing tests to ensure application handles unexepcted input.
+    * **Current and Next Steps:** Research additional security measures we could add and code refinement.
 
-* **Josiah Kila:**
-  **Feb 21**
-  * **Work Done:** Added transaction timestamping, analytics functions, and data input validation systems.
-  * **Current and Next Steps:** Refinement of analytics and input validation.
+# **Chris Dang:**
+  * **Feb 21**
+    * **Work Done:** Conducted tests to ensure currently implemented functions worked as expected.
+    * **Current and Next Steps:** Research additional security measures we could add.
 
-  **Mar 28**
-  * **Work Done:** Enhance the security model by refining the QR code generator and OTP validation systems to protect sensitive user data.
-  * **Current and Next Steps:** Research additional security measures we could add.
+  * **Mar 28**
+    * **Work Done:** Conducted a Risk Assessment and verification methods and how solutions were executed.
+    * **Current and Next Steps:** Continue to enhance our project documentation and risk assessment strategies.
 
-  **Apr 11**
-  * **Work Done:** Conducted fuzzing tests to ensure application handles unexepcted input.
-  * **Current and Next Steps:** Research additional security measures we could add and code refinement.
+  * **Apr 11**
+    * **Work Done:** Assisted in testing hacks against our application.
+    * **Current and Next Steps:** Continue to enhance our project documentation and risk assessment strategies.
 
-* **Chris Dang:**
-  **Feb 21**
-  * **Work Done:** Conducted tests to ensure currently implemented functions worked as expected.
-  * **Current and Next Steps:** Research additional security measures we could add.
+# **Michelle Ho:**
+  * **Feb 21**
+    * **Work Done:** Developed the initial text-based user interaction menu and data analytics functionalities.
+    * **Current and Next Steps:** Refinement of UI menu and analytics functions.
 
-  **Mar 28**
-  * **Work Done:** Conducted a Risk Assessment and verification methods and how solutions were executed.
-  * **Current and Next Steps:** Continue to enhance our project documentation and risk assessment strategies.
+  * **Mar 28**
+    * **Work Done:** Further refined code so functions were optimized and UI was enhanced to be more user friendly.
+    * **Current and Next Steps:** Continue to refine code and consider additional security measures.
 
-  **Apr 11**
-  * **Work Done:** Assisted in testing hacks against our application.
-  * **Current and Next Steps:** Continue to enhance our project documentation and risk assessment strategies.
-
-* **Michelle Ho:**
-  **Feb 21**
-  * **Work Done:** Developed the initial text-based user interaction menu and data analytics functionalities.
-  * **Current and Next Steps:** Refinement of UI menu and analytics functions.
-
-  **Mar 28**
-  * **Work Done:** Further refined code so functions were optimized and UI was enhanced to be more user friendly.
-  * **Current and Next Steps:** Continue to refine code and consider additional security measures.
-
-  **Apr 11**
-  * **Work Done:** Conducted SQL injection attacks to test security of application databases.
-  * **Current and Next Steps:** Expand the data analytics options to include comprehensive expense tracking and reporting, integrating date-time functionality for each transaction record.
+  * **Apr 11**
+    * **Work Done:** Conducted SQL injection attacks to test security of application databases.
+    * **Current and Next Steps:** Expand the data analytics options to include comprehensive expense tracking and reporting, integrating date-time functionality for each transaction record.
