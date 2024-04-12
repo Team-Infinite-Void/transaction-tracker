@@ -55,7 +55,7 @@ A Python project that will track a user's transactions. Users will be able to se
   * Add complexity requirements to username and password.
 
 ## Member Contributions and Next Steps
-# **Galen Chang:**
+### **Galen Chang:**
   * **Feb 21**
     * **Work Done:** Implemented encrypted SQLite3 database functionalities for user account management.
     * **Current and Next Steps:** Implement transaction database using SQLite3.
@@ -68,12 +68,12 @@ A Python project that will track a user's transactions. Users will be able to se
     * **Work Done:** Tested password cracking tool "John The Ripper" against encrypted user account database.
     * **Current and Next Steps:** Encrypt the transaction database, debug analytics function, and implement username and password complexity requirements.
 
-# **Josiah Kila:**
+### **Josiah Kila:**
   * **Feb 21**
     * **Work Done:** Added transaction timestamping, analytics functions, and data input validation systems.
     * **Current and Next Steps:** Refinement of analytics and input validation.
 
-  **Mar 28**
+  * **Mar 28**
     * **Work Done:** Enhance the security model by refining the QR code generator and OTP validation systems to protect sensitive user data.
     * **Current and Next Steps:** Research additional security measures we could add.
 
@@ -81,7 +81,7 @@ A Python project that will track a user's transactions. Users will be able to se
     * **Work Done:** Conducted fuzzing tests to ensure application handles unexepcted input.
     * **Current and Next Steps:** Research additional security measures we could add and code refinement.
 
-# **Chris Dang:**
+### **Chris Dang:**
   * **Feb 21**
     * **Work Done:** Conducted tests to ensure currently implemented functions worked as expected.
     * **Current and Next Steps:** Research additional security measures we could add.
@@ -94,7 +94,7 @@ A Python project that will track a user's transactions. Users will be able to se
     * **Work Done:** Assisted in testing hacks against our application.
     * **Current and Next Steps:** Continue to enhance our project documentation and risk assessment strategies.
 
-# **Michelle Ho:**
+### **Michelle Ho:**
   * **Feb 21**
     * **Work Done:** Developed the initial text-based user interaction menu and data analytics functionalities.
     * **Current and Next Steps:** Refinement of UI menu and analytics functions.
