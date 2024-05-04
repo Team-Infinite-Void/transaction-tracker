@@ -106,3 +106,40 @@ A Python project that will track a user's transactions. Users will be able to se
   * **Apr 11**
     * **Work Done:** Conducted SQL injection attacks to test security of application databases.
     * **Current and Next Steps:** Expand the data analytics options to include comprehensive expense tracking and reporting, integrating date-time functionality for each transaction record.
+
+  # Transaction Tracker
+
+Transaction Tracker is a Python application designed to help users securely input and view their purchases, and perform data analytics to get a better sense of their total spending within an allotted time.
+
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Conclusion and Documentation](#project-conclusion-and-documentation)
+- [Links and Resources](#links-and-resources)
+
+## Features
+
+- **User Interaction Menu**: Text-based menu allowing users to navigate various functionalities.
+- **User Account Database**: Features an interactive login and account creation menu.
+- **Transactions Database**: Interact with transaction records through a dedicated menu.
+- **QR Authenticator**: Enhanced security during login with a QR code scanned via Google Authenticator.
+- **Data Analytics**: View and analyze spending over specified periods.
+
+## Installation
+
+**System Requirements**: Compatible with Windows 10 and newer. Requires Python 3.8 or higher.
+
+```bash
+# Clone the repository
+git clone https://github.com/Team-Infinite-Void/transaction-tracker
+
+# Navigate to the project directory
+cd transaction-tracker
+
+# Install required packages
+pip install -r requirements.txt
+
+# Run the application
+python transaction_tracker.py
+
