@@ -107,39 +107,56 @@ A Python project that will track a user's transactions. Users will be able to se
     * **Work Done:** Conducted SQL injection attacks to test security of application databases.
     * **Current and Next Steps:** Expand the data analytics options to include comprehensive expense tracking and reporting, integrating date-time functionality for each transaction record.
 
-  # Transaction Tracker
+# Part IV: Final Wrap-Up and Documentation
 
-Transaction Tracker is a Python application designed to help users securely input and view their purchases, and perform data analytics to get a better sense of their total spending within an allotted time.
+## Division of Labor
 
-## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Conclusion and Documentation](#project-conclusion-and-documentation)
-- [Links and Resources](#links-and-resources)
+- **Galen Chang**: Focused on finalizing the database encryption and ensuring all data is securely handled.
+- **Josiah Kila**: Led the testing phase, ensuring all functionalities meet the performance standards.
+- **Chris Dang**: Managed the compilation of project documentation and was responsible for the final submission requirements.
+- **Michelle Ho**: Oversaw the deployment of the final version and updated the project's Wiki page with the latest information.
 
-## Features
+## Technical Notes
 
-- **User Interaction Menu**: Text-based menu allowing users to navigate various functionalities.
-- **User Account Database**: Features an interactive login and account creation menu.
-- **Transactions Database**: Interact with transaction records through a dedicated menu.
-- **QR Authenticator**: Enhanced security during login with a QR code scanned via Google Authenticator.
-- **Data Analytics**: View and analyze spending over specified periods.
+### Specifications for Use
+- **Operating System**: Compatible with Windows 10 and newer.
+- **Python Version**: Requires Python 3.8 or higher.
+- **Dependencies**: All dependencies are listed in the `requirements.txt` file.
 
-## Installation
-
-**System Requirements**: Compatible with Windows 10 and newer. Requires Python 3.8 or higher.
-
-```bash
-# Clone the repository
+### Installation Instructions
+1. Clone the repository:
 git clone https://github.com/Team-Infinite-Void/transaction-tracker
 
-# Navigate to the project directory
-cd transaction-tracker
-
-# Install required packages
+2. Install the required packages:
 pip install -r requirements.txt
 
-# Run the application
+3. Run the application:
 python transaction_tracker.py
 
+## Developer Reflections
+
+Looking back on our journey through the development of the Transaction Tracker, our team has encountered a range of emotions from exhilaration to frustration. Here are some key takeaways:
+
+### Achievements
+- **Robust Security Features**: Implementing QR-based two-factor authentication was a milestone that enhanced the security of our application significantly.
+- **Dynamic Data Analysis Tools**: Developing complex data analytics functionalities that provide users with meaningful insights into their spending habits.
+
+### Challenges
+- **Cross-Platform Compatibility**: Ensuring the application runs smoothly across different operating systems remains a challenge.
+- **Performance Optimization**: Balancing complex features with optimal performance was particularly challenging during the initial phases.
+
+### Surprises
+- The adaptability of the team to unexpected technical challenges and the innovative solutions that were brainstormed during those times.
+
+### Disappointments
+- **Limited User Testing**: Due to time constraints, extensive user testing was not feasible, which could have provided more insights into user experience improvements.
+
+### Disclaimers/Caveats
+- The application is optimized for educational and demonstration purposes and may require modifications for commercial deployment.
+
+## Important Links
+
+- **Online Repository**: [Transaction Tracker GitHub Repository](https://github.com/Team-Infinite-Void/transaction-tracker)
+- **Final Project Documentation**: [Project Documentation File](https://github.com/Team-Infinite-Void/transaction-tracker/blob/main/DOCUMENTATION.md)
+- **Release Version of the Program**: [Release Version](https://github.com/Team-Infinite-Void/transaction-tracker/releases)
+- **Wiki Page**: [Project Wiki](https://github.com/Team-Infinite-Void/transaction-tracker/wiki)
