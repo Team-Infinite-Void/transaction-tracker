@@ -158,7 +158,7 @@ Looking back on our journey through the development of the Transaction Tracker, 
 ## Important Links
 
 - **Online Repository**: [Transaction Tracker GitHub Repository](https://github.com/Team-Infinite-Void/transaction-tracker)
-- **Final Project Documentation**: [Project Documentation File](https://github.com/Team-Infinite-Void/transaction-tracker/blob/main/DOCUMENTATION.md)
+- **Final Project Documentation**: [Project Documentation File](https://github.com/Team-Infinite-Void/transaction-tracker/blob/main/documentation.pdf)
 - **Release Version of the Program**: [Release Version](https://github.com/Team-Infinite-Void/transaction-tracker/releases)
 - **Wiki Page**: [Project Wiki](https://github.com/Team-Infinite-Void/transaction-tracker/wiki/Transaction-Tracker)
 - **License**: [License](https://github.com/Team-Infinite-Void/transaction-tracker/blob/main/LICENSE.txt)
