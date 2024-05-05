@@ -22,20 +22,18 @@ def main():
     print("database connection success")
 
     # Create SQL cursor to traverse the SQL databases
-    account_cursor = create_account_cursor(account_sql_connection, account_database)
+    account_cursor = create_account_cursor(account_sql_connection)
     print("account cursor success")
 
     # Attempt to login
-    username = login_menu(account_sql_connection, account_cursor)
-    if username:
-        hashed_username = hashlib.sha256(username.encode()).hexdigest()
-        print(hashed_username)
-        transaction_cursor = create_transaction_cursor(transaction_sql_connection, transaction_database, hashed_username)
+    username, fernet_key = login_menu(account_sql_connection, account_cursor)
+    hashed_username = hashlib.sha256(username.encode()).hexdigest()
+    transaction_cursor = create_transaction_cursor(transaction_sql_connection)
 
-        cont = True
-        while cont:
-            print('Logged in as %a\n' % username)
-            choice = input("""***************
+    cont = True
+    while cont:
+        print(f'Logged in as {username}\n')
+        choice = input("""***************
 1. Add new record
 2. Delete a record
 3. View all records
@@ -43,22 +41,27 @@ def main():
 5. Delete your account
 6. Exit
 Your choice: """)
-            if choice == "1":
-                add_new_record(transaction_cursor, hashed_username)
-            elif choice == "2":
-                delete_record(transaction_cursor, hashed_username)
-            elif choice == "3":
-                view_all_records(transaction_cursor, hashed_username)
-            elif choice == "4":
-                view_analytics(transaction_cursor, hashed_username)
-            elif choice == "5":
-                delete_account(username, account_sql_connection, account_cursor)
-            elif choice == "6":
-                print("You chose to exit, goodbye!")
+        
+        if choice == "1":
+            add_new_record(transaction_sql_connection, transaction_cursor, hashed_username, fernet_key)
+        elif choice == "2":
+            delete_record(transaction_cursor, hashed_username, fernet_key)
+        elif choice == "3":
+            view_all_records(transaction_cursor, hashed_username, fernet_key)
+        elif choice == "4":
+            view_analytics(transaction_cursor, hashed_username, fernet_key)
+        elif choice == "5":
+            test = delete_account(username, account_sql_connection, account_cursor)
+            print(test)
+            if not test:
                 cont = False
                 break
-            else:
-                print("That was an invalid input. Please enter 1, 2, 3, 4, 5, or 6.")
+        elif choice == "6":
+            print("You chose to exit, goodbye!")
+            cont = False
+            break
+        else:
+            print("That was an invalid input. Please enter 1, 2, 3, 4, 5, or 6.")
 
 if __name__ == "__main__":
     main()

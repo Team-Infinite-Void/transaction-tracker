@@ -1,27 +1,27 @@
 import hashlib
-import os
 import sqlite3
 import pyotp
 import qrcode
+from cryptography.fernet import Fernet
 
 # Function to connect to the database
 def connect_to_account_db(user_db):
     return sqlite3.connect(user_db)
 
 # Function to create a cursor for database operations
-def create_account_cursor(sql_connection, user_db):
+def create_account_cursor(sql_connection):
     try:
         cursor = sql_connection.cursor()
     except Exception as error:
         print(error)
 
-    # if os.path.getsize(user_db) == 0:
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS userdata (
             id INTEGER PRIMARY KEY,
             username TEXT NOT NULL,
             password TEXT NOT NULL,
-            totp_secret TEXT NOT NULL
+            totp_secret TEXT NOT NULL,
+            fernet TEXT NOT NULL
         );
     """)
 
@@ -39,9 +39,9 @@ def login_menu(sql_connection, cursor):
         selection = input('Your choice: ')
 
         if selection == '1':
-            username = login(cursor)
-            if username:
-                return username
+            username, fernet_key, success = login(cursor)
+            if success == 0:
+                return username, fernet_key
         elif selection == '2':
             add_user(sql_connection, cursor)
         elif selection == '3':
@@ -69,7 +69,8 @@ def login(cursor):
             secret = row[3]  # Assuming the OTP secret is stored in the fourth column
             if generate_and_verify_otp(secret):
                 valid_login = True
-                return username
+                fernet_key = row[4]
+                return username, fernet_key, 0
         else:
             print('Either the user doesn\'t exist or the credentials are invalid. Please try again.\n\n')
 
@@ -102,7 +103,8 @@ def add_user(sql_connection, cursor):
     secret = pyotp.random_base32()
     hashed_username = hashlib.sha256(username.encode()).hexdigest()
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
-    cursor.execute("INSERT INTO userdata (username, password, totp_secret) VALUES (?, ?, ?)", (hashed_username, hashed_password, secret))
+    fernet = (Fernet.generate_key())
+    cursor.execute("INSERT INTO userdata (username, password, totp_secret, fernet) VALUES (?, ?, ?, ?)", (hashed_username, hashed_password, secret, fernet))
     sql_connection.commit()
 
     # Generate and display QR code
@@ -119,7 +121,7 @@ def generate_qr_code(uri):
 def generate_and_verify_otp(secret):
     """Generate an OTP and prompt for verification."""
     totp = pyotp.TOTP(secret)
-    otp = totp.now()
+    #otp = totp.now()
 
     user_provided_otp = input("Enter the OTP from Google Authenticator: ")
     # Increase the verification window
@@ -136,7 +138,7 @@ def delete_account(username, sql_connection, cursor):
 
     while not delete_user:
         confirm = input('Are you sure you want to delete your account? (Y or N)')
-        if confirm.upper() != 'Y':
+        if confirm.upper() == 'Y':
             password = input('Please enter your password: ')
             hashed_username = hashlib.sha256(username.encode()).hexdigest()
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
@@ -146,10 +148,12 @@ def delete_account(username, sql_connection, cursor):
                 cursor.execute("DELETE FROM userdata WHERE username = ?", (hashed_username,))
                 sql_connection.commit()
                 delete_user = True
-                print('User', username, 'was deleted.\n')
+                print('User', username, 'was deleted.')
+                print("Goodbye!")
+                return False
             else:
                 print('Either the user doesn\'t exist or the credentials are invalid. Please try again.\n\n')
         elif confirm.upper() == 'N':
-            break
+            return True
         else:
             print('Invalid input. Please enter either \'Y\' or \'N\'.\n\n')
