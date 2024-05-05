@@ -1,0 +1,8 @@
+cffi
+colorama
+cryptography
+pycparser
+pyotp
+pypng
+qrcode
+typing_extensions

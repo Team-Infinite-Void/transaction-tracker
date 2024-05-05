@@ -111,7 +111,7 @@ A Python project that will track a user's transactions. Users will be able to se
 
 ## Division of Labor
 
-- **Galen Chang**: Focused on finalizing the database encryption and ensuring all data is securely handled.
+- **Galen Chang**: Implemented and tested all database encryption and ensured all data is securely handled.
 - **Josiah Kila**: Led the testing phase, ensuring all functionalities meet the performance standards.
 - **Chris Dang**: Managed the compilation of project documentation and was responsible for the final submission requirements.
 - **Michelle Ho**: Oversaw the deployment of the final version and updated the project's Wiki page with the latest information.
@@ -140,6 +140,7 @@ Looking back on our journey through the development of the Transaction Tracker, 
 ### Achievements
 - **Robust Security Features**: Implementing QR-based two-factor authentication was a milestone that enhanced the security of our application significantly.
 - **Dynamic Data Analysis Tools**: Developing complex data analytics functionalities that provide users with meaningful insights into their spending habits.
+- **Implementation of Encryption Tools**: Utilized encryption tools to ensure data at rest is secure and protected.
 
 ### Challenges
 - **Cross-Platform Compatibility**: Ensuring the application runs smoothly across different operating systems remains a challenge.
