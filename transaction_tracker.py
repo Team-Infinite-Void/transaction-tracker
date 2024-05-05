@@ -14,16 +14,13 @@ def main():
     # Set the database names
     account_database = 'userdatabase.db'
     transaction_database = 'transactions.db'
-    print("vars success")
 
     # Connect to the databases
     account_sql_connection = connect_to_account_db(account_database)
     transaction_sql_connection = connect_to_transaction_db(transaction_database)
-    print("database connection success")
 
     # Create SQL cursor to traverse the SQL databases
     account_cursor = create_account_cursor(account_sql_connection)
-    print("account cursor success")
 
     # Attempt to login
     username, fernet_key = login_menu(account_sql_connection, account_cursor)

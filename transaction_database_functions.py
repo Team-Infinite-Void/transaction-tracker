@@ -9,7 +9,6 @@ def connect_to_transaction_db(transaction_db):
 def create_transaction_cursor(sql_connection):
     try:
         cursor = sql_connection.cursor()
-        print("cursor success")
     except Exception as error:
         print(error)
 
